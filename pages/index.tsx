@@ -1,9 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter, Outfit } from "next/font/google";
+import styles from "@/styles/Landing.module.css";
 
-const inter = Inter({ subsets: ['latin'] })
+const outfit = Outfit({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
@@ -14,110 +15,131 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
+      <main className={`${styles.main} space-y-8`}>
+        <div
+          className={`${styles.hero} flex items-center justify-center border border-gray-600`}
+        >
+          <div className={styles.heroCircle} />
+          <div className="flex flex-col space-y-4 t">
+            <h1
+              className={`${outfit.className} ${styles.title} ${styles.shimmer} font-medium text-center text-6xl pb-2 opacity-0.9`}
             >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
+              Debugging made easy
+            </h1>
+            <p
+              className={`${inter.className} opacity-70 font-weight-200 tracking-tight text-xl text-center -translate-y-2`}
+            >
+              Get suggested solutions for your Supabase errors, right within
+              your browser console.
+            </p>
+            <div className="font-mono mx-auto text-sm border rounded-full border-gray-400 px-4 py-2 flex items-center space-x-2 cursor-pointer transition hover:bg-green-900 duration-250">
+              <p>npm install supadebug</p>
+              <p>📋</p>
+            </div>
           </div>
         </div>
 
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
+        <div
+          className="flex items-start space-x-8 mx-auto pt-20 pb-10"
+          style={{ width: "calc(100vw - 100px)" }}
+        >
+          <div className="w-[45%] rounded-xl px-8 space-y-6">
+            <p className="font-mono text-gray-500">DEV PRODUCTIVITY</p>
+            <h3 className="!mt-4 text-4xl">
+              Dive into your errors
+              <br />
+              straight from the console
+            </h3>
+            <p className="opacity-70">
+              Supa-debug provides explanations into client errors from the
+              Supabase JS library, along with providing suggested solutions -
+              all while within your browser console.
+            </p>
+          </div>
+          <div className="w-[55%] rounded-xl flex justify-end">
+            <div className="bg-gray-900 w-[90%] rounded-xl px-8 py-8 space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-4">
+                  <div className="w-[12px] h-[12px] flex items-center justify-center bg-red-500 rounded-full space-x-4">
+                    <p className="text-xs font-bold -translate-y-[1px]">
+                      &times;
+                    </p>
+                  </div>
+                  <p className="font-mono text-red-500 text-sm">
+                    HTTP 400: Invalid refresh token
+                  </p>
+                </div>
+                <p className="font-mono text-gray-500 text-sm underline">
+                  next-dev.js?878b:32
+                </p>
+              </div>
+              <div className="font-mono text-gray-400 text-sm translate-x-[27px]">
+                To find out more, run supadebug.hsad() in the console
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-4">
+                  <div className="w-[12px] h-[12px] flex items-center justify-center rounded-full space-x-4">
+                    <p className="text-xs font-bold -translate-y-[1px] text-gray-500">
+                      {`>`}
+                    </p>
+                  </div>
+                  <p className="font-mono text-grey-200 text-sm">
+                    supadebug.hsad()
+                  </p>
+                </div>
+              </div>
+              <div className="font-mono text-gray-400 text-sm ml-[27px]">
+                The refresh token has been invalidated, usually because the
+                user's session has expired, or potentially a race condition has
+                occured. To find out more, here are the relevant documentation:
+                https://supabase.com/docs/guides/resources/glossary#refresh-token
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
+        <div
+          className="flex flex-col items-start justify-center mx-auto py-20 space-y-4"
+          style={{ width: "calc(100vw - 100px)" }}
+        >
+          <p className="font-mono text-gray-500 text-center mx-auto">
+            SETTING UP
+          </p>
+          <p className="text-base text-center mx-auto">
+            Initialize SupaDebug in the root of your app with your OpenAPI
+            secret key
+          </p>
+          <div className="!mt-6 bg-gray-900 w-[60%] mx-auto rounded-xl px-8 py-8 space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="space-y-2">
+                <div className="flex items-center font-mono text-gray-300 text-sm space-x-6">
+                  <p className="text-gray-500">1</p>
+                  <p>{`import { supadebug } from 'supa-debug'`}</p>
+                </div>
+                <div className="flex items-center font-mono text-gray-300 text-sm space-x-6">
+                  <p className="text-gray-500">2</p>
+                  <p>{`supadebug(OPEN_API_SECRET_KEY)`}</p>
+                </div>
+                <div className="flex items-center font-mono text-gray-300 text-sm space-x-6">
+                  <p className="text-gray-500">3</p>
+                </div>
+                <div className="flex items-start font-mono text-gray-600 text-sm space-x-6">
+                  <p className="text-gray-500">4</p>
+                  <p>{`// All console errors from the Supabase client library will be powered by SupaDebug`}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
+        <div className="w-full py-20 pb-40 bg-[#111] flex flex-col items-center justify-center space-y-4">
+          <p className="font-mono text-gray-500">STAY UPDATED WITH US</p>
+          <input
+            placeholder="Join our mailing list"
+            className="bg-transparent border border-gray-600 rounded-lg font-lg py-2 px-4 text-gray-200 w-[500px]"
+          ></input>
         </div>
       </main>
     </>
-  )
+  );
 }
